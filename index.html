@@ -3,6 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Чайханский плов: раскладка по весу риса и пошаговые таймеры">
+<meta name="theme-color" content="#0b1f52">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Плов">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
 <style>:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Чайханский плов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -1480,6 +1488,12 @@ if ('IntersectionObserver' in window) {
     plateInView = entry.isIntersecting;
     paintTimer(Date.now());
   }, { threshold: 0.25 }).observe($('plate'));
+}
+</script>
+<script>
+// Работа без интернета. Браузер разрешает её только на адресах с HTTPS.
+if ('serviceWorker' in navigator && window.isSecureContext) {
+  addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
 }
 </script>
 <script src="tg.js"></script>
