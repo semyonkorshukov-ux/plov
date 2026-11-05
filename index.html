@@ -1,0 +1,1488 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top);padding-bottom:env(safe-area-inset-bottom)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Чайханский плов</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=El+Messiri:wght@500;600;700&family=Geist:wght@400;500;700&display=swap">
+<style>
+/* Вся страница как чайный сервиз «Пахта» и риштанский ляган: кобальтовая глазурь с узором из коробочек хлопка,
+   золотая кайма, бирюза, морковный и шафрановый огонь. Светлая тема: белый фарфор с той же росписью.
+   Колонка 1208px: раскладка 340 + 12 + плита 460 + 12 + расписание 384 = 1208. */
+:root {
+  --ground: #e6eff5; --surface: #ffffff; --raised: #e9f1fa; --active: #fff0d2; --field: #ffffff;
+  --border: #c7d6ea; --rule: #e2eaf4; --control: #9fb4d3;
+  --trim: #d6b45f; --trim-soft: #efe1ba;
+  --text: #0f2359; --muted: #47598a; --heading: #7d5a0c; --amount: #1a4ea6; --now-ink: #8a4b00;
+  --primary: #f4ab3c; --on-primary: #0f2359; --secondary: #dde8f7; --on-secondary: #0f2359;
+  --glaze: #1d5fbf; --glaze-soft: #7fa5dd; --petal-off: #e3e9f2; --plate: #fdfefe; --plate-center: #ffffff;
+  --over-1: #e8741c; --over-2: #f5ac5e;
+  --ph-prep: #0b7a76; --ph-zirvak: #b9520f; --ph-rice: #1d5fbf; --ph-table: #7d5a0c;
+  --f1: #f2bd3f; --f2: #f09f2d; --f3: #ea7f22; --f4: #e0591b; --f5: #c93a17;
+  --negative: #c4242a; --pill-negative-bg: #ffedea; --pill-negative-ink: #831c1e;
+  --notice-bg: #fff0d2; --notice-ink: #5e3b00;
+  --radius-card: 16px; --radius-control: 10px;
+  --gap: 12px; --pad: 24px; --control-height: 48px;
+  --font: "Geist", Inter, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --display: "El Messiri", "Geist", Georgia, serif;
+  --fs-title: 32px; --fs-section: 20px; --fs-kpi: 34px; --fs-body: 16px; --fs-row: 14px; --fs-small: 13px;
+  --pattern-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cpath d='M48 0L96 48L48 96L0 48Z' fill='none' stroke='%231d5fbf' stroke-opacity='.09'/%3E%3Cg transform='translate(48 48)' fill='%231d5fbf' fill-opacity='.08'%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(72)'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(144)'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(216)'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(288)'/%3E%3C/g%3E%3Cg fill='%23b5862a' fill-opacity='.3'%3E%3Ccircle r='3'/%3E%3Ccircle cx='96' r='3'/%3E%3Ccircle cy='96' r='3'/%3E%3Ccircle cx='96' cy='96' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='96' viewBox='0 0 96 96'%3E%3Cpath d='M48 0L96 48L48 96L0 48Z' fill='none' stroke='%23e3b857' stroke-opacity='.14'/%3E%3Cg transform='translate(48 48)' fill='%23ffffff' fill-opacity='.08'%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(72)'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(144)'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(216)'/%3E%3Cpath d='M0-13C5-10 5-3 0 0C-5-3-5-10 0-13Z' transform='rotate(288)'/%3E%3C/g%3E%3Cg fill='%23e3b857' fill-opacity='.28'%3E%3Ccircle r='3'/%3E%3Ccircle cx='96' r='3'/%3E%3Ccircle cy='96' r='3'/%3E%3Ccircle cx='96' cy='96' r='3'/%3E%3C/g%3E%3C/svg%3E");
+  --frieze: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='36' viewBox='0 0 44 36'%3E%3Crect width='44' height='36' fill='%23143a94'/%3E%3Cpath d='M0 2.5H44M0 33.5H44' stroke='%23e3b857' stroke-width='1.5'/%3E%3Cpath d='M11 6C15 11 15 25 11 30C7 25 7 11 11 6Z' fill='%23fdfbf3'/%3E%3Cpath d='M33 6C37 11 37 25 33 30C29 25 29 11 33 6Z' fill='%237fb0ff'/%3E%3Cpath d='M22 13L26 18L22 23L18 18Z' fill='%23e3b857'/%3E%3Ccircle cy='18' r='2.6' fill='%233fd0c5'/%3E%3Ccircle cx='44' cy='18' r='2.6' fill='%233fd0c5'/%3E%3C/svg%3E");
+  --kaima: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='10' viewBox='0 0 18 10'%3E%3Cpath d='M9 1L13 5L9 9L5 5Z' fill='%23c9a24e'/%3E%3Ccircle cy='5' r='1.4' fill='%23c9a24e'/%3E%3Ccircle cx='18' cy='5' r='1.4' fill='%23c9a24e'/%3E%3C/svg%3E");
+  --rosette: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg transform='translate(12 12)'%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z'/%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z' transform='rotate(45)'/%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z' transform='rotate(90)'/%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z' transform='rotate(135)'/%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z' transform='rotate(180)'/%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z' transform='rotate(225)'/%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z' transform='rotate(270)'/%3E%3Cpath d='M0-11C2.4-8 2.4-3.5 0-1C-2.4-3.5-2.4-8 0-11Z' transform='rotate(315)'/%3E%3C/g%3E%3C/svg%3E");
+  --pattern: var(--pattern-light);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --ground: #0b1f52; --surface: #12306f; --raised: #1a3b85; --active: #2a4b9f; --field: #0d2560;
+    --border: #2b4f9e; --rule: #21418c; --control: #5475c0;
+    --trim: #b8964a; --trim-soft: #4f5c78;
+    --text: #fbfaf4; --muted: #c3d0ec; --heading: #f6cd74; --amount: #f6cd74; --now-ink: #f6cd74;
+    --primary: #f4ab3c; --on-primary: #0d1f50; --secondary: #21458f; --on-secondary: #fbfaf4;
+    --glaze: #8db8ff; --glaze-soft: #4f82dc; --petal-off: #1b3a80; --plate: #0d2560; --plate-center: #0a1d4d;
+    --over-1: #ff9a3d; --over-2: #ffc46b;
+    --ph-prep: #4fd8cd; --ph-zirvak: #ff9d4d; --ph-rice: #8db8ff; --ph-table: #f6cd74;
+    --f1: #f6c453; --f2: #f5a93a; --f3: #f28c2c; --f4: #ec6a24; --f5: #e2481f;
+    --negative: #ff8a7a; --pill-negative-bg: #4a1f2e; --pill-negative-ink: #ffc9c0;
+    --notice-bg: #3a3a55; --notice-ink: #ffe3a6;
+    --pattern: var(--pattern-dark);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --ground: #0b1f52; --surface: #12306f; --raised: #1a3b85; --active: #2a4b9f; --field: #0d2560;
+  --border: #2b4f9e; --rule: #21418c; --control: #5475c0;
+  --trim: #b8964a; --trim-soft: #4f5c78;
+  --text: #fbfaf4; --muted: #c3d0ec; --heading: #f6cd74; --amount: #f6cd74; --now-ink: #f6cd74;
+  --primary: #f4ab3c; --on-primary: #0d1f50; --secondary: #21458f; --on-secondary: #fbfaf4;
+  --glaze: #8db8ff; --glaze-soft: #4f82dc; --petal-off: #1b3a80; --plate: #0d2560; --plate-center: #0a1d4d;
+  --over-1: #ff9a3d; --over-2: #ffc46b;
+  --ph-prep: #4fd8cd; --ph-zirvak: #ff9d4d; --ph-rice: #8db8ff; --ph-table: #f6cd74;
+  --f1: #f6c453; --f2: #f5a93a; --f3: #f28c2c; --f4: #ec6a24; --f5: #e2481f;
+  --negative: #ff8a7a; --pill-negative-bg: #4a1f2e; --pill-negative-ink: #ffc9c0;
+  --notice-bg: #3a3a55; --notice-ink: #ffe3a6;
+  --pattern: var(--pattern-dark);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  background: var(--ground) var(--pattern);
+  color: var(--text);
+  font: 400 var(--fs-body)/1.5 var(--font);
+  -webkit-text-size-adjust: 100%;
+}
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+  z-index: 10; background: var(--ground);
+}
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; padding: 0; }
+ul, ol { list-style: none; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+b { font-weight: 700; color: var(--amount); }
+.num { font-variant-numeric: tabular-nums; }
+.muted { color: var(--muted); }
+.small { font-size: var(--fs-small); }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+:focus-visible { outline: 3px solid var(--primary); outline-offset: 2px; }
+[data-ph="prep"] { --phase: var(--ph-prep); }
+[data-ph="zirvak"] { --phase: var(--ph-zirvak); }
+[data-ph="rice"] { --phase: var(--ph-rice); }
+[data-ph="table"] { --phase: var(--ph-table); }
+
+/* Кайма сверху и снизу страницы */
+.frieze { height: 36px; background: var(--frieze) center / 44px 36px repeat-x; }
+.frieze-end { margin-top: 4px; }
+
+/* Шапка */
+.topbar {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 6; background: var(--ground);
+  border-bottom: 1px solid var(--trim);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.topbar-in { max-width: 1208px; height: 60px; margin: 0 auto; display: flex; align-items: center; gap: 10px; }
+.mark { width: 30px; height: 30px; flex: none; }
+.mark circle { fill: none; stroke: var(--trim); stroke-width: 1.5; }
+.mark path { fill: var(--glaze); }
+.mark .gold { fill: var(--trim); }
+h1 { font: 700 26px/1.1 var(--display); white-space: nowrap; }
+.tools { margin-left: auto; display: flex; align-items: center; gap: 12px; min-width: 0; }
+.mini { font-size: 18px; font-weight: 500; color: var(--amount); }
+.mini.over { color: var(--negative); }
+.screen-state { font-size: var(--fs-small); color: var(--muted); white-space: nowrap; }
+.tool {
+  min-height: 38px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px;
+  background: var(--secondary); color: var(--on-secondary); border: 1px solid var(--trim); border-radius: var(--radius-control);
+  font-size: var(--fs-small); white-space: nowrap; touch-action: manipulation;
+}
+.tool svg { width: 16px; height: 16px; flex: none; }
+.tool:hover { background: var(--active); }
+.tool.attn { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
+
+.head {
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-top: 12px;
+}
+.finding { max-width: 1208px; margin: 0 auto; text-wrap: pretty; font-weight: 500; }
+
+/* Сетка */
+.canvas {
+  max-width: calc(1208px + 32px); margin: 0 auto; display: flex; flex-direction: column; gap: var(--gap);
+  padding-block: 12px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.mid, .side { display: flex; flex-direction: column; gap: var(--gap); min-width: 0; }
+.canvas[data-mode="cook"] .mid { order: 1; }
+.canvas[data-mode="cook"] .side { order: 2; }
+.canvas[data-mode="cook"] #calc { order: 3; }
+@media (min-width: 760px) {
+  .canvas {
+    display: grid; align-items: start;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+  }
+  .mid { grid-column: 1; grid-row: 1 / span 2; }
+  #calc { grid-column: 2; grid-row: 1; }
+  .side { grid-column: 2; grid-row: 2; }
+  .canvas[data-mode="cook"] .side { grid-row: 1; }
+  .canvas[data-mode="cook"] #calc { grid-row: 2; }
+}
+@media (min-width: 1000px) {
+  .canvas { grid-template-columns: minmax(0, 1fr) 400px; }
+}
+@media (max-width: 999px) {
+  :root { --pad: 18px; }
+}
+@media (min-width: 1200px) {
+  .canvas { grid-template-columns: 340px minmax(0, 1fr) 384px; grid-template-rows: auto; }
+  #calc, .canvas[data-mode="cook"] #calc { grid-column: 1; grid-row: 1; }
+  .mid { grid-column: 2; grid-row: 1; }
+  .side, .canvas[data-mode="cook"] .side { grid-column: 3; grid-row: 1; }
+}
+
+/* Карточка как край фарфорового блюда: две золотые линии */
+.card {
+  background: var(--surface); border: 1px solid var(--trim); border-radius: var(--radius-card);
+  box-shadow: inset 0 0 0 4px var(--surface), inset 0 0 0 5px var(--trim-soft);
+  padding: var(--pad); min-width: 0;
+}
+.card-head {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding-bottom: 16px; margin-bottom: 4px;
+  background: var(--kaima) left bottom / 18px 10px repeat-x;
+}
+.sec-title { display: inline-flex; align-items: center; gap: 8px; font: 700 var(--fs-section)/1.2 var(--display); }
+.sec-title::before, .phase-head::before {
+  content: ""; width: 18px; height: 18px; flex: none; background: var(--phase, var(--trim));
+  -webkit-mask: var(--rosette) center / contain no-repeat; mask: var(--rosette) center / contain no-repeat;
+}
+.sub-title { font: 700 17px/1.25 var(--display); color: var(--heading); margin-top: 16px; margin-bottom: 6px; }
+
+/* Кнопки */
+.btn {
+  min-height: var(--control-height); padding: 0 14px; border: 0; border-radius: var(--radius-control);
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  background: var(--secondary); color: var(--on-secondary); font-weight: 500;
+  transition: transform .08s ease, background-color .12s ease;
+  touch-action: manipulation;
+}
+.btn:hover { background: var(--active); }
+.btn:active { transform: scale(.97); }
+.btn svg { width: 18px; height: 18px; flex: none; }
+.btn-primary {
+  min-height: 60px; background: var(--primary); color: var(--on-primary);
+  font: 700 22px/1.1 var(--display); text-wrap: balance;
+}
+.btn-primary:hover { background: var(--primary); filter: brightness(1.06); }
+.link {
+  min-height: 44px; padding: 0 2px; background: none; border: 0; color: var(--muted);
+  font-size: 14px; text-decoration: underline; text-underline-offset: 3px;
+}
+.link:hover { color: var(--text); }
+
+/* Раскладка */
+#calc { display: flex; flex-direction: column; }
+.field-label { font: 700 17px/1.25 var(--display); color: var(--heading); margin-top: 12px; margin-bottom: 8px; }
+.rice-field { position: relative; }
+.rice-field input {
+  width: 100%; height: 60px; padding: 0 44px 0 14px; background: var(--field);
+  border: 1px solid var(--trim); border-radius: var(--radius-control);
+  font: 700 var(--fs-kpi)/1 var(--display); color: var(--amount);
+}
+.rice-field .unit { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 18px; pointer-events: none; }
+#riceRange { width: 100%; height: 36px; margin: 6px 0 2px; -webkit-appearance: none; appearance: none; background: transparent; touch-action: pan-y; }
+#riceRange::-webkit-slider-runnable-track { height: 8px; border-radius: 4px; background: var(--secondary); box-shadow: inset 0 0 0 1px var(--trim-soft); }
+#riceRange::-moz-range-track { height: 8px; border-radius: 4px; background: var(--secondary); box-shadow: inset 0 0 0 1px var(--trim-soft); }
+#riceRange::-webkit-slider-thumb { -webkit-appearance: none; width: 28px; height: 28px; margin-top: -10px; border-radius: 50%; background: var(--primary); border: 2px solid var(--trim); }
+#riceRange::-moz-range-thumb { width: 24px; height: 24px; border-radius: 50%; background: var(--primary); border: 2px solid var(--trim); }
+.presets { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px; }
+.presets button {
+  min-height: 38px; padding: 0; background: var(--secondary); color: var(--on-secondary); border: 0; border-radius: var(--radius-control);
+  font-size: var(--fs-small); white-space: nowrap; font-variant-numeric: tabular-nums; touch-action: manipulation;
+}
+.presets button:hover { background: var(--active); }
+.presets button[aria-pressed="true"] { background: var(--primary); color: var(--on-primary); font-weight: 700; }
+.hint { font-size: var(--fs-small); color: var(--muted); margin-top: 8px; }
+.hint.bad { color: var(--negative); }
+.facts { display: grid; grid-template-columns: 1fr 1fr; margin-top: 14px; border: 1px solid var(--trim); border-radius: var(--radius-control); }
+.facts > div { padding: 8px 12px; min-width: 0; }
+.facts > div + div { border-left: 1px solid var(--trim); }
+.facts dt { font-size: var(--fs-small); color: var(--muted); }
+.facts dd { font-size: 18px; font-weight: 700; color: var(--amount); min-height: 38px; display: flex; align-items: center; font-variant-numeric: tabular-nums; }
+.stepper { gap: 2px; justify-content: space-between; }
+.stepper button { width: 38px; height: 38px; background: var(--secondary); color: var(--on-secondary); border: 0; border-radius: var(--radius-control); font-size: 18px; line-height: 1; touch-action: manipulation; }
+.stepper button:hover { background: var(--active); }
+.table { width: 100%; border-collapse: collapse; }
+.table th { text-align: left; font: 700 17px/1.25 var(--display); color: var(--heading); padding: 16px 0 6px; }
+.table th.num { text-align: right; font: 700 15px/1.25 var(--font); font-variant-numeric: tabular-nums; }
+.table td { padding: 6px 0; border-top: 1px solid var(--rule); vertical-align: top; font-size: var(--fs-row); line-height: 1.35; }
+.table td.num { text-align: right; white-space: nowrap; font-weight: 700; color: var(--amount); padding-left: 12px; font-size: 16px; line-height: 1.2; }
+.table .note-line { display: block; font-size: var(--fs-small); color: var(--muted); margin-top: 1px; }
+#achTable { margin-top: 8px; }
+#achichuk .do { margin-top: 12px; }
+
+/* Плита */
+.stage { scroll-margin-top: 68px; display: flex; flex-direction: column; gap: var(--gap); }
+.stage-head { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; gap: 8px; }
+.stage-title { text-align: center; min-width: 0; }
+.step-title { font: 700 var(--fs-title)/1.1 var(--display); text-wrap: balance; }
+.step-count { font-size: 14px; font-weight: 500; color: var(--phase, var(--muted)); margin-top: 2px; font-variant-numeric: tabular-nums; }
+.arrow {
+  width: 48px; height: 48px; display: inline-flex; align-items: center; justify-content: center; border-radius: 50%;
+  background: var(--secondary); color: var(--on-secondary); border: 1px solid var(--trim);
+  transition: transform .08s ease, background-color .12s ease; touch-action: manipulation;
+}
+.arrow:hover { background: var(--active); }
+.arrow:active { transform: scale(.94); }
+.arrow svg { width: 20px; height: 20px; }
+.state { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border: 1px solid var(--trim); border-radius: var(--radius-control); }
+.state > div { padding: 8px 12px; min-width: 0; }
+.state > div + div { border-left: 1px solid var(--trim); }
+.state dt { font-size: var(--fs-small); color: var(--muted); display: flex; align-items: center; justify-content: space-between; gap: 6px; min-height: 20px; }
+.state dd { font-size: 17px; font-weight: 500; line-height: 1.2; }
+.state dd.no { color: var(--negative); }
+.state dd.none { color: var(--muted); font-weight: 400; }
+.ico { width: 24px; height: 18px; flex: none; color: var(--phase, var(--glaze)); }
+.ico.ban { color: var(--negative); }
+.bars { display: inline-flex; align-items: flex-end; gap: 2px; height: 18px; flex: none; }
+.bars i { display: block; width: 4px; border-radius: 1px; background: var(--petal-off); }
+.bars i:nth-child(1) { height: 20%; } .bars i:nth-child(2) { height: 40%; } .bars i:nth-child(3) { height: 60%; }
+.bars i:nth-child(4) { height: 80%; } .bars i:nth-child(5) { height: 100%; }
+.bars i.on:nth-child(1) { background: var(--f1); } .bars i.on:nth-child(2) { background: var(--f2); }
+.bars i.on:nth-child(3) { background: var(--f3); } .bars i.on:nth-child(4) { background: var(--f4); }
+.bars i.on:nth-child(5) { background: var(--f5); }
+.bars.tiny { height: 13px; gap: 1px; }
+.bars.tiny i { width: 3px; }
+
+.plate { display: block; width: min(100%, 46vh); max-width: 412px; margin: 0 auto; }
+.p-base { fill: var(--plate); stroke: var(--trim); stroke-width: 1.5; }
+.p-line { fill: none; stroke: var(--trim); stroke-width: 1; }
+.p-center { fill: var(--plate-center); stroke: var(--trim); stroke-width: 1.5; }
+.p-off { fill: var(--petal-off); }
+.p-on { fill: var(--glaze); }
+.p-on2 { fill: var(--glaze-soft); }
+.p-dot { fill: var(--trim); }
+.p-seg { fill: none; stroke-width: 7; }
+.p-seg[data-ph="prep"] { stroke: var(--ph-prep); }
+.p-seg[data-ph="zirvak"] { stroke: var(--ph-zirvak); }
+.p-seg[data-ph="rice"] { stroke: var(--ph-rice); }
+.p-seg.todo { opacity: .28; }
+.p-seg.cur { stroke: var(--primary); stroke-width: 10; }
+.p-cue { fill: var(--primary); stroke: var(--plate); stroke-width: 2; }
+.p-cue.past { fill: var(--control); }
+.p-digits { font-family: var(--display); font-weight: 600; text-anchor: middle; fill: var(--text); }
+.p-cap { font-size: 17px; text-anchor: middle; fill: var(--muted); }
+.plate.over .p-digits { fill: var(--negative); }
+.plate.over .p-on { fill: var(--over-1); }
+.plate.over .p-on2 { fill: var(--over-2); }
+.plate.paused .p-digits { fill: var(--muted); }
+@media (prefers-reduced-motion: no-preference) {
+  .plate.ringing .p-digits { animation: ring 1s steps(2, jump-none) infinite; }
+  @keyframes ring { from { opacity: 1; } to { opacity: .35; } }
+  .p-on, .p-on2 { transition: fill .3s ease; }
+}
+
+.banner { padding: 10px 12px; border-radius: var(--radius-control); background: var(--notice-bg); color: var(--notice-ink); text-wrap: pretty; }
+.banner b { color: inherit; }
+.banner.alert { background: var(--pill-negative-bg); color: var(--pill-negative-ink); }
+.banner .em { font-weight: 700; }
+.meta { font-size: 14px; color: var(--muted); text-align: center; text-wrap: balance; }
+
+.controls {
+  display: grid; gap: 8px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-areas: "next next next" "toggle minus plus";
+}
+#next { grid-area: next; }
+#toggle { grid-area: toggle; }
+#minus { grid-area: minus; }
+#plus { grid-area: plus; }
+.controls.paused { grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "next next" "minus plus"; }
+.controls.solo { grid-template-columns: 1fr; grid-template-areas: "next"; }
+.reset { display: block; margin-top: 8px; margin-bottom: -8px; }
+
+/* Шаг */
+.do { display: flex; flex-direction: column; gap: 8px; margin-top: 8px; }
+.do li { position: relative; padding-left: 16px; text-wrap: pretty; }
+.do li::before { content: ""; position: absolute; left: 1px; top: .55em; width: 7px; height: 7px; transform: rotate(45deg); background: var(--trim); }
+.cues { display: flex; flex-direction: column; gap: 4px; }
+.cues li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px; font-size: 14px; line-height: 1.4; }
+.cues li .num { font-weight: 700; color: var(--amount); }
+.cues li.past { color: var(--muted); }
+.cues li.past .num { color: var(--muted); font-weight: 500; }
+.cues li.past b { color: inherit; font-weight: 500; }
+.cues li.past span:last-child { text-decoration: line-through; }
+.warn, .tip { margin-top: 12px; padding: 10px 12px; border-radius: var(--radius-control); font-size: 14px; line-height: 1.4; text-wrap: pretty; }
+.warn { background: var(--pill-negative-bg); color: var(--pill-negative-ink); }
+.tip { background: var(--raised); }
+
+/* Расписание */
+.route-cols {
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) 18px 58px 10px; gap: 8px;
+  padding: 4px 8px 0; font-size: var(--fs-small); color: var(--muted);
+}
+.route-cols .c-fire { justify-self: end; white-space: nowrap; }
+.route-cols .c-dur { text-align: right; }
+.phase-head { display: flex; align-items: center; gap: 8px; font: 700 19px/1.2 var(--display); color: var(--phase); padding: 14px 8px 6px; }
+.phase-head .phase-time { margin-left: auto; font: 400 var(--fs-row)/1.2 var(--font); color: var(--muted); }
+.row { border-top: 1px solid var(--rule); }
+.row-btn {
+  width: 100%; min-height: 48px; padding: 6px 8px; background: none; border: 0; border-radius: var(--radius-control); text-align: left;
+  display: grid; grid-template-columns: 48px minmax(0, 1fr) 18px 58px 10px; align-items: center; gap: 8px; font-size: var(--fs-row); line-height: 1.25;
+  touch-action: manipulation;
+}
+.row-main { min-width: 0; font-weight: 500; }
+.row-sum { display: block; font-size: var(--fs-small); font-weight: 400; color: var(--muted); margin-top: 1px; }
+.row-btn:hover { background: var(--raised); }
+.row.is-now .row-btn { background: var(--active); }
+.row.is-done .row-main { color: var(--muted); font-weight: 400; }
+.row-time { color: var(--muted); }
+.row.is-now .row-time { color: var(--now-ink); font-weight: 700; }
+.row-time svg { width: 16px; height: 16px; display: block; color: var(--ph-prep); }
+.row-time .skipped { color: var(--muted); }
+.row-dur { text-align: right; white-space: nowrap; }
+.row-chev { width: 10px; height: 10px; color: var(--muted); transition: transform .12s ease; }
+.row-btn[aria-expanded="true"] .row-chev { transform: rotate(90deg); }
+.row-more { padding: 0 8px 12px; font-size: 14px; line-height: 1.45; }
+.row-more .do { margin-top: 4px; }
+.row-more .btn { margin-top: 12px; width: 100%; }
+
+/* Телефон */
+@media (max-width: 759px) {
+  :root { --pad: 16px; --fs-title: 28px; }
+  .frieze { height: 28px; background-size: 34px 28px; }
+  .frieze-end { margin-bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+  body:has(.canvas[data-mode="cook"]) .frieze-top { display: none; }
+  .plate { width: min(100%, 36vh); }
+  h1 { font-size: 23px; }
+  .presets button { min-height: 44px; }
+  .stepper button { width: 44px; height: 44px; }
+  .controls {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 5;
+    background: var(--surface); border-top: 2px solid var(--trim);
+    padding-top: 10px; padding-bottom: calc(10px + env(safe-area-inset-bottom, 0px));
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    grid-template-columns: 52px 46px 46px minmax(0, 1fr);
+    grid-template-areas: "toggle minus plus next";
+  }
+  .controls.paused { grid-template-columns: 46px 46px minmax(0, 1fr); grid-template-areas: "minus plus next"; }
+  .controls.solo { grid-template-columns: 1fr; grid-template-areas: "next"; }
+  .controls .btn { min-height: 58px; padding: 0 6px; }
+  .controls .lbl { display: none; }
+  .btn-primary { font-size: 19px; }
+  .controls.solo .btn-primary { font-size: 22px; }
+  .screen-state { display: none; }
+  .tool .lbl { display: none; }
+  .tool { min-height: 44px; min-width: 44px; justify-content: center; padding: 0 8px; }
+  .tool.attn .lbl-short { display: inline; }
+}
+@media (max-width: 999px) {
+  .state > div { padding: 8px; }
+  .state dd { font-size: 16px; }
+}
+@media (max-width: 380px) {
+  :root { --fs-title: 24px; }
+  .state > div { padding: 8px 6px; }
+  .state dd { font-size: 14.5px; }
+  .state .ico { display: none; }
+  .state .bars { gap: 1px; }
+  .state .bars i { width: 3px; }
+  .facts > div { padding: 8px; }
+  h1 { font-size: 21px; }
+}
+@media (max-width: 340px) {
+  .state dd { font-size: 14px; }
+}
+@media (min-width: 760px) {
+  .tool .lbl-short { display: none; }
+}
+</style>
+
+</head>
+<body>
+<div class="frieze frieze-top" aria-hidden="true"></div>
+<header class="topbar">
+  <div class="topbar-in">
+    <svg class="mark" viewBox="0 0 26 26" aria-hidden="true">
+      <circle cx="13" cy="13" r="12"></circle>
+      <path d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z"></path>
+      <path class="gold" d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z" transform="rotate(45 13 13)"></path>
+      <path d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z" transform="rotate(90 13 13)"></path>
+      <path class="gold" d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z" transform="rotate(135 13 13)"></path>
+      <path d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z" transform="rotate(180 13 13)"></path>
+      <path class="gold" d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z" transform="rotate(225 13 13)"></path>
+      <path d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z" transform="rotate(270 13 13)"></path>
+      <path class="gold" d="M13 3.2c1.7 2 1.7 5.6 0 7.6-1.7-2-1.7-5.6 0-7.6z" transform="rotate(315 13 13)"></path>
+    </svg>
+    <h1>Чайханский плов</h1>
+    <div class="tools">
+      <span id="mini" class="mini num" hidden></span>
+      <span id="screenState" class="screen-state" hidden></span>
+      <button id="sound" class="tool" type="button"></button>
+    </div>
+  </div>
+</header>
+
+<div class="head"><p id="finding" class="finding"></p></div>
+
+<main id="canvas" class="canvas" data-mode="idle">
+  <section id="calc" class="card" aria-labelledby="calcTitle">
+    <div class="card-head"><h2 id="calcTitle" class="sec-title">Раскладка</h2></div>
+    <label class="field-label" for="rice">Сколько риса</label>
+    <div class="rice-field">
+      <input id="rice" type="text" inputmode="decimal" autocomplete="off" aria-describedby="riceHint" value="1000">
+      <span class="unit">г</span>
+    </div>
+    <input id="riceRange" type="range" min="200" max="5000" step="50" value="1000" aria-label="Вес риса в граммах">
+    <div id="presets" class="presets" role="group" aria-label="Готовый вес риса">
+      <button type="button" data-g="300">300 г</button>
+      <button type="button" data-g="500">500 г</button>
+      <button type="button" data-g="1000">1 кг</button>
+      <button type="button" data-g="1500">1,5 кг</button>
+      <button type="button" data-g="2000">2 кг</button>
+      <button type="button" data-g="3000">3 кг</button>
+    </div>
+    <p id="riceHint" class="hint">От 200 г до 5 кг. Стакан риса около 200 г.</p>
+    <dl class="facts">
+      <div>
+        <dt>Едоков</dt>
+        <dd class="stepper">
+          <button id="eatMinus" type="button" aria-label="На одного едока меньше">−</button>
+          <span id="eaters"></span>
+          <button id="eatPlus" type="button" aria-label="На одного едока больше">+</button>
+        </dd>
+      </div>
+      <div>
+        <dt>Казан</dt>
+        <dd id="kazan"></dd>
+      </div>
+    </dl>
+    <table id="table" class="table"></table>
+  </section>
+
+  <div class="mid">
+    <section id="stage" class="card stage" aria-labelledby="stepTitle">
+      <div class="stage-head">
+        <button id="prev" class="arrow" type="button" aria-label="Предыдущий шаг" title="Предыдущий шаг">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12.5 4L6.5 10l6 6"/></svg>
+        </button>
+        <div class="stage-title">
+          <h2 id="stepTitle" class="step-title"></h2>
+          <p id="stepCount" class="step-count"></p>
+        </div>
+        <button id="skip" class="arrow" type="button" aria-label="Следующий шаг" title="Следующий шаг">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.5 4l6 6-6 6"/></svg>
+        </button>
+      </div>
+      <dl id="state" class="state" hidden>
+        <div><dt>Огонь<span id="fireBars"></span></dt><dd id="fireWord"></dd></div>
+        <div><dt>Крышка<span id="lidIcon"></span></dt><dd id="lidWord"></dd></div>
+        <div><dt>Мешать<span id="stirIcon"></span></dt><dd id="stirWord"></dd></div>
+      </dl>
+      <svg id="plate" class="plate" viewBox="0 0 400 400" role="img" aria-label="Таймер в виде лягана: лепестки закрашиваются по мере того, как идёт время шага"></svg>
+      <p id="timerSr" class="sr" role="timer"></p>
+      <p id="banner" class="banner" role="status" hidden></p>
+      <p id="meta" class="meta num" hidden></p>
+      <p id="screenWarn" class="meta" hidden>Экран может погаснуть. Отключи автоблокировку на время готовки.</p>
+      <div id="controls" class="controls">
+        <button id="next" class="btn btn-primary" type="button"></button>
+        <button id="toggle" class="btn" type="button"></button>
+        <button id="minus" class="btn num" type="button" aria-label="Убавить минуту">−1<span class="lbl">мин</span></button>
+        <button id="plus" class="btn num" type="button" aria-label="Добавить минуту">+1<span class="lbl">мин</span></button>
+      </div>
+    </section>
+
+    <section id="now" class="card" aria-labelledby="nowTitle">
+      <div class="card-head"><h2 id="nowTitle" class="sec-title"></h2></div>
+      <div id="nowBody"></div>
+      <button id="reset" class="link reset" type="button" hidden>Сбросить готовку</button>
+    </section>
+  </div>
+
+  <div class="side">
+    <section id="route" class="card" aria-labelledby="routeTitle">
+      <div class="card-head">
+        <h2 id="routeTitle" class="sec-title">Расписание</h2>
+        <span id="routeNote" class="muted small num"></span>
+      </div>
+      <div id="routeBody"></div>
+    </section>
+
+    <section id="achichuk" class="card" aria-labelledby="achTitle">
+      <div class="card-head"><h2 id="achTitle" class="sec-title">Ачичук к плову</h2></div>
+      <table id="achTable" class="table"></table>
+      <ul class="do">
+        <li>Лук нарежь как можно тоньше и на 10 минут замочи в подсоленной воде, так уйдёт горечь.</li>
+        <li>Помидоры нарежь тонкими полукольцами, смешай с луком и острым перцем.</li>
+        <li>Посоли прямо перед подачей, иначе помидоры пустят сок.</li>
+      </ul>
+    </section>
+  </div>
+</main>
+<div class="frieze frieze-end" aria-hidden="true"></div>
+
+<script>
+/*LOGIC-START*/
+const NB = ' ';
+const MIN_RICE = 200, MAX_RICE = 5000, PER_EATER = 125;
+const KAZANS = [3, 4, 6, 8, 10, 12, 16, 22, 32, 40, 50];
+const FIRE = ['выключен', 'минимум', 'слабый', 'средний', 'сильный', 'максимум'];
+const PHASES = [['prep', 'Подготовка'], ['zirvak', 'Зирвак'], ['rice', 'Рис'], ['table', 'Стол']];
+
+const clampRice = g => Math.min(MAX_RICE, Math.max(MIN_RICE, Math.round(g)));
+function parseRice(str) {
+  const m = String(str).toLowerCase().replace(',', '.').trim().match(/^(\d*\.?\d+)\s*(кг|kg|гр|г|g)?/);
+  if (!m) return null;
+  const v = parseFloat(m[1]), u = m[2];
+  return Math.round(u === 'кг' || u === 'kg' || (!u && v < 10) ? v * 1000 : v);
+}
+function plural(n, one, few, many) {
+  const m = Math.abs(n) % 100, d = m % 10;
+  if (m > 10 && m < 20) return many;
+  if (d > 1 && d < 5) return few;
+  return d === 1 ? one : many;
+}
+const comma = x => String(x).replace('.', ',');
+const fmtW = g => g >= 1000 && g % 10 === 0 ? comma(g / 1000) + NB + 'кг' : g + NB + 'г';
+const fmtVol = ml => ml >= 1000 ? comma(+(ml / 1000).toFixed(2)) + NB + 'л' : ml + NB + 'мл';
+const r10 = x => Math.round(x / 10) * 10;
+const r50 = x => Math.round(x / 50) * 50;
+// Чайные ложки: до столовой шаг ¼ ч. л., дальше ¼ ст. л.
+const spoon = t => t >= 3 ? Math.round(t / 0.75) * 0.75 : Math.max(0.25, Math.round(t * 4) / 4);
+function fracStr(x) {
+  const w = Math.floor(x + 1e-9), g = ['', '¼', '½', '¾'][Math.round((x - w) * 4)];
+  return (w || !g ? String(w) : '') + g;
+}
+function fmtSpoon(t) {
+  const tb = t / 3;
+  return t >= 3 && Math.abs(tb * 4 - Math.round(tb * 4)) < 1e-9 ? fracStr(tb) + NB + 'ст.' + NB + 'л.' : fracStr(t) + NB + 'ч.' + NB + 'л.';
+}
+const heads = n => n + NB + plural(n, 'головка', 'головки', 'головок');
+const pods = n => n + NB + plural(n, 'стручок', 'стручка', 'стручков');
+function fmtDur(min) {
+  const h = Math.floor(min / 60), m = min % 60;
+  if (!h) return m + NB + 'мин';
+  return m ? h + NB + 'ч' + NB + m + NB + 'мин' : h + NB + 'ч';
+}
+function fmtClock(sec) {
+  const m = Math.floor(sec / 60), s = Math.floor(sec % 60);
+  return String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+// Раскладка на 1 кг риса: 1 кг говядины, 1 кг моркови, 300 г лука, 200 г курдюка, 150 мл масла.
+function amounts(rice) {
+  const k = rice / 1000;
+  return {
+    k, rice, meat: rice, carrot: rice, onion: r10(300 * k),
+    kurdyuk: Math.max(60, r10(200 * k)), oil: Math.max(60, r10(150 * k)),
+    zira: spoon(4.5 * k), barberry: spoon(3 * k), coriander: spoon(k),
+    garlic: Math.max(1, Math.round(2 * k)), pepper: Math.max(1, Math.round(k)),
+    saltZ: spoon(4.5 * k), saltS: spoon(3 * k),
+    waterS: r50(2000 * k), waterZ: r50(1000 * k), waterR: r50(1300 * k),
+    tomato: r50(500 * k), achOnion: r10(100 * k),
+    eaters: Math.max(2, Math.round(rice / PER_EATER)),
+    kazan: KAZANS.find(v => v >= 7 * k) || 50
+  };
+}
+
+const b = x => '<b>' + x + '</b>';
+// Минуты указаны для 1 кг риса, exp задаёт рост с партией. Шаги после закладки риса идут по таймлайну
+// пользователя: range держит его вилку минут при любом весе, томление всегда 30 минут.
+const BASE = [
+  { id: 'cut', phase: 'prep', title: 'Нарежь всё', short: 'нарезка', min: 20, exp: .8, fire: 0, lid: null, stir: null, text: ({ a }) => ({
+    do: [
+      `Морковь ${b(fmtW(a.carrot))}: бруски 4–5 мм толщиной и 5 см длиной. Только ножом, с тёрки она раскиснет.`,
+      `Лук ${b(fmtW(a.onion))}: полукольца 3–4 мм.`,
+      `Говядина ${b(fmtW(a.meat))}: куски 3–4 см, плёнки срежь.`,
+      `Курдюк ${b(fmtW(a.kurdyuk))}: кубики 1–1,5 см.`,
+      `Чеснок ${b(heads(a.garlic))}: сними верхнюю шелуху, головки не разбирай.`,
+      `Отмерь зиру, барбарис и кориандр.`
+    ],
+    done: 'Всё нарезано и лежит у плиты отдельными кучками.'
+  }) },
+  { id: 'soak', phase: 'prep', title: 'Промой и замочи рис', short: 'замачивание', min: 5, exp: .4, fire: 0, lid: null, stir: null, text: ({ a, soakText }) => ({
+    do: [
+      `Промой ${b(fmtW(a.rice))} риса в 5–7 водах, пока вода не станет почти прозрачной. Мой бережно, зерно не три.`,
+      `Залей тёплой водой, 40–45 °C: примерно ${b(fmtVol(a.waterS))} и ${b(fmtSpoon(a.saltS))} соли.`,
+      `Рис будет мокнуть до закладки, это около ${soakText}.`
+    ],
+    done: 'Рис залит. Счётчик замачивания пойдёт со следующего шага.'
+  }) },
+  { id: 'fat', phase: 'zirvak', title: 'Вытопи курдюк', short: 'курдюк', min: 12, exp: .35, fire: 3, lid: 'открыта', stir: 'иногда', text: ({ a }) => ({
+    do: [
+      `Прогрей сухой казан 2–3 минуты.`,
+      `Заложи курдюк ${b(fmtW(a.kurdyuk))} и топи, иногда помешивая.`,
+      `Шкварки вынь шумовкой. Посоли и съешь, это награда повару.`
+    ],
+    done: 'Кубики съёжились и стали золотыми, на дне прозрачный жир.'
+  }) },
+  { id: 'oil', phase: 'zirvak', title: 'Раскали масло', short: 'масло', min: 3, exp: .2, fire: 4, lid: 'открыта', stir: 'не нужно', text: ({ a }) => ({
+    do: [
+      `Влей ${b(fmtVol(a.oil))} масла к вытопленному жиру.`,
+      `Хлопковое доведи до лёгкого дымка, так уйдёт его запах. Рафинированному хватит прогрева.`
+    ],
+    done: 'Над маслом лёгкая дымка, кусочек лука сразу шипит.',
+    warn: 'Сильно задымило: выключи огонь и дай остыть. Вспыхнуло: накрой крышкой, водой не туши.'
+  }) },
+  { id: 'onion', phase: 'zirvak', title: 'Обжарь лук', short: 'лук', min: 7, exp: .35, fire: 4, lid: 'открыта', stir: 'постоянно', text: ({ a }) => ({
+    do: [
+      `Высыпь лук ${b(fmtW(a.onion))} в раскалённый жир и мешай без остановки.`,
+      `Жарь до ровного золотистого цвета. С мясом он ещё потемнеет.`
+    ],
+    done: 'Лук золотой, края чуть темнее, пахнет сладко.',
+    warn: 'Почернел: лук выбрось, иначе горечь уйдёт в весь плов.'
+  }) },
+  { id: 'meat', phase: 'zirvak', title: 'Обжарь мясо', short: 'мясо', min: 12, exp: .5, fire: 4, lid: 'открыта', stir: 'редко', text: ({ a, k }) => ({
+    do: [
+      `Заложи говядину ${b(fmtW(a.meat))} к луку. Первые 3 минуты не трогай, пусть схватится.`,
+      `Потом переворачивай раз в пару минут. Сначала потечёт сок, он должен выпариться.`
+    ].concat(k >= 2 ? [`Мяса много: закладывай порциями, иначе оно потушится вместо жарки.`] : []),
+    done: 'Сок выпарился, слышно шкварчание вместо бульканья. На кусках румяная корка.',
+    cues: [{ at: 180, text: 'Переверни мясо.' }]
+  }) },
+  { id: 'carrot', phase: 'zirvak', title: 'Заложи морковь', short: 'морковь', min: 10, exp: .4, fire: 4, lid: 'открыта', stir: 'редко', text: ({ a }) => ({
+    do: [
+      `Выложи морковь ${b(fmtW(a.carrot))} слоем поверх мяса. Первые 3 минуты не мешай.`,
+      `Потом переворачивай шумовкой снизу вверх, бережно, чтобы бруски не ломались.`,
+      `Сразу поставь кипятить ${b(fmtVol(a.waterZ))} воды.`
+    ],
+    done: 'Морковь осела и стала гибкой, но держит форму. Жир стал оранжевым.',
+    cues: [{ at: 180, text: 'Перемешай морковь снизу вверх.' }]
+  }) },
+  { id: 'water', phase: 'zirvak', title: 'Залей кипятком', short: 'кипяток', min: 3, exp: .4, fire: 5, lid: 'открыта', stir: 'один раз', text: ({ a }) => ({
+    do: [
+      `Влей кипяток по стенке, будет брызгать: около ${b(fmtVol(a.waterZ))}, на 1–1,5 см выше моркови.`,
+      `Разотри в ладонях ${b(fmtSpoon(a.zira))} зиры. Всыпь её, ${b(fmtSpoon(a.barberry))} барбариса и ${b(fmtSpoon(a.coriander))} кориандра.`,
+      `Утопи в бульоне чеснок, ${b(heads(a.garlic))}, и острый перец, ${b(pods(a.pepper))}. Стручок не прокалывай.`
+    ],
+    done: 'Бульон бурно кипит по всей поверхности.'
+  }) },
+  { id: 'simmer', phase: 'zirvak', title: 'Томи зирвак', short: 'зирвак', min: 45, exp: .2, fire: 2, lid: 'открыта', stir: 'не нужно', text: ({ a }) => ({
+    do: [
+      `Убавь огонь, чтобы бульон едва побулькивал. Крышку не закрывай, так он останется прозрачным.`,
+      `Не мешай: чем спокойнее кипит, тем чище вкус.`
+    ],
+    done: 'Мясо легко прокалывается вилкой, морковь целая, бульон цвета крепкого чая и заметно солонее супа.',
+    cues: [
+      { at: .5, text: 'Проверь уровень. Бульон ушёл ниже моркови: подлей кипятка.' },
+      { at: .67, text: `Посоли: ${b(fmtSpoon(a.saltZ))}. Бульон должен быть заметно солонее супа, рис заберёт соль.` },
+      { at: -360, text: `Поставь кипятить ${b(fmtVol(a.waterR))} воды для риса.` }
+    ]
+  }) },
+  { id: 'layer', phase: 'rice', title: 'Заложи рис', short: 'рис', min: 3, exp: .3, fire: 5, lid: 'открыта', stir: 'нельзя', text: ({ a }) => ({
+    do: [
+      `Достань чеснок и перец на тарелку. Огонь на максимум.`,
+      `Слей воду с риса и выложи его ровным слоем поверх зирвака. С этого момента не мешай.`,
+      `Лей кипяток через шумовку, чтобы не размыть слой: около ${b(fmtVol(a.waterR))}, на ${b('1,5–2' + NB + 'см')} выше риса.`
+    ],
+    done: 'Рис лежит ровно, вода стоит над ним на 1,5–2 см, зирвак снизу не поднялся.',
+    tip: 'Литры тут ориентир, решает уровень: в широком казане воды уйдёт больше.'
+  }) },
+  { id: 'boil', phase: 'rice', title: 'Выпари воду', short: 'выпаривание', min: 5, exp: .35, range: [3, 7], fire: 5, lid: 'открыта', stir: 'нельзя', text: () => ({
+    do: [
+      `Вода бурно кипит, масло разбивает пену и уходит вниз.`,
+      `Жди, пока вся вода скроется под рисом. Обычно это ${b('3–7' + NB + 'минут')}.`
+    ],
+    done: 'Вся вода скрылась под рисом.',
+    cues: [{ at: 180, text: 'Проверяй: вода уже скрылась под рисом?' }]
+  }) },
+  { id: 'dome', phase: 'rice', title: 'Собери горку', short: 'горка', min: 2, exp: .15, range: [1, 2], fire: 5, lid: 'открыта', stir: 'нельзя', text: () => ({
+    do: [
+      `Шумовкой собери рис пологой горкой от краёв к центру.`,
+      `Сделай палочкой ${b('5–6' + NB + 'проколов')} до дна.`,
+      `Верни чеснок и перец.`
+    ],
+    done: 'Из проколов идёт только пар и масло, без хлюпанья мутной воды.'
+  }) },
+  { id: 'steam', phase: 'rice', title: 'Томи под крышкой', short: 'томление', min: 30, exp: 0, fire: 1, lid: 'закрыта', stir: 'нельзя', text: () => ({
+    do: [
+      `Огонь на самый минимум, как на остаточных углях.`,
+      `Закрой казан плотно, лучше через полотенце.`,
+      `Все ${b('30' + NB + 'минут')} вообще не открывай: рис доходит на пару.`,
+      `Пока ждёшь, сделай ачичук и согрей ляган.`
+    ],
+    done: 'Вышло 30 минут.',
+    warn: 'Концы полотенца завяжи наверху, подальше от огня.'
+  }) },
+  { id: 'mix', phase: 'rice', title: 'Перемешай, нарежь мясо', short: 'перемешать', min: 3, exp: .25, range: [2, 3], fire: 0, lid: 'открыта', stir: 'снизу вверх', text: () => ({
+    do: [
+      `Выключи огонь и открой казан. Быстро перемешай весь плов снизу вверх.`,
+      `Достань куски мяса, чеснок и перец на доску.`,
+      `Казан сразу прикрой крышкой, чтобы рис не остыл. Нарежь мясо.`
+    ],
+    done: 'Плов перемешан, казан прикрыт, мясо нарезано.'
+  }) },
+  { id: 'serve', phase: 'table', title: 'Подавай', short: 'подача', min: 0, exp: 0, fire: 0, lid: 'снята', stir: 'не нужно', text: () => ({
+    do: [
+      `Выкладывай рис на ляган, потряхивая шумовкой для рассыпчатости.`,
+      `Сверху выложи нарезанное мясо, чеснок и перец.`
+    ],
+    done: 'Рисинка к рисинке, жир блестит, на дне нет лужи.',
+    tip: 'К столу ачичук и зелёный чай.'
+  }) }
+];
+
+// Короткая строка шага для расписания: что идёт в казан.
+const SUMMARY = {
+  cut: () => 'овощи, мясо, курдюк',
+  soak: a => fmtW(a.rice) + ' риса, ' + fmtVol(a.waterS) + ' воды',
+  fat: a => fmtW(a.kurdyuk) + ' курдюка',
+  oil: a => fmtVol(a.oil) + ' масла',
+  onion: a => fmtW(a.onion) + ' лука',
+  meat: a => fmtW(a.meat) + ' говядины',
+  carrot: a => fmtW(a.carrot) + ' моркови',
+  water: a => fmtVol(a.waterZ) + ' кипятка, специи',
+  simmer: a => fmtSpoon(a.saltZ) + ' соли',
+  layer: a => 'рис, ' + fmtVol(a.waterR) + ' кипятка',
+  boil: () => 'пока вода не скроется',
+  dome: () => '5–6 проколов до дна',
+  steam: () => 'казан не открывать',
+  mix: () => 'мясо на доску',
+  serve: () => 'мясо сверху, ачичук рядом'
+};
+
+const cueSec = (at, D) => Math.round(at < 0 ? D + at : at <= 1 ? D * at : at);
+
+function makePlan(rice, adj) {
+  adj = adj || {};
+  const k = rice / 1000, a = amounts(rice);
+  const steps = BASE.map(s => {
+    if (!s.min) return { ...s, mins: 0 };
+    const [lo, hi] = s.range || [1, Infinity];
+    const base = Math.min(hi, Math.max(lo, Math.round(s.min * Math.pow(k, s.exp))));
+    return { ...s, mins: Math.max(1, base + (adj[s.id] || 0)) };
+  });
+  const soakMin = steps.slice(steps.findIndex(s => s.id === 'fat'), steps.findIndex(s => s.id === 'simmer') + 1)
+    .reduce((n, s) => n + s.mins, 0);
+  const ctx = { a, k, soakText: fmtDur(Math.round(soakMin / 5) * 5) };
+  steps.forEach(s => {
+    Object.assign(s, s.text(ctx));
+    s.sum = SUMMARY[s.id](a);
+    const D = s.mins * 60;
+    s.cues = (s.cues || []).map(c => ({ sec: cueSec(c.at, D), text: c.text }))
+      .filter(c => c.sec > 0 && c.sec < D).sort((x, y) => x.sec - y.sec);
+  });
+  const total = steps.reduce((n, s) => n + s.mins, 0);
+  const phases = PHASES.map(([id, name]) => ({
+    id, name, mins: steps.filter(s => s.phase === id).reduce((n, s) => n + s.mins, 0)
+  }));
+  return { a, steps, total, phases, soakMin };
+}
+
+// Что случилось между двумя отсчётами таймера (секунды от начала шага).
+function timerEvents(prev, e, cues, D) {
+  return {
+    cue: cues.some(c => prev < c.sec && e >= c.sec),
+    finished: prev < D && e >= D
+  };
+}
+/*LOGIC-END*/
+
+const $ = id => document.getElementById(id);
+const pad2 = n => String(n).padStart(2, '0');
+const clockOf = ts => { const d = new Date(ts); return pad2(d.getHours()) + ':' + pad2(d.getMinutes()); };
+const lc = s => s.charAt(0).toLowerCase() + s.slice(1);
+
+const KEY = 'chaikhana-plov-v2';
+const S = { rice: 1000, mode: 'idle', idx: 0, running: false, startedAt: 0, elapsed: 0, saved: {}, adj: {}, skipped: {}, soakAt: null, sound: true, open: null, touched: 0 };
+function load() {
+  try {
+    const v = JSON.parse(localStorage.getItem(KEY) || 'null');
+    if (!v) return;
+    Object.assign(S, v);
+    S.rice = clampRice(+S.rice || 1000);
+    if (S.mode !== 'idle' && S.mode !== 'cook') S.mode = 'idle';
+    if (S.idx < 0 || S.idx >= BASE.length) S.idx = 0;
+    S.open = null;
+    // Вчерашняя готовка не должна встречать таймером «+900:00».
+    if (S.mode === 'cook' && Date.now() - (S.touched || 0) > 8 * 3600e3) clearCooking();
+  } catch (e) { /* без хранилища страница просто начнёт с начала */ }
+}
+function save() {
+  S.touched = Date.now();
+  try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) { /* таймер работает и без сохранения */ }
+}
+function clearCooking() {
+  S.mode = 'idle'; S.idx = 0; S.running = false; S.startedAt = 0; S.elapsed = 0;
+  S.saved = {}; S.adj = {}; S.skipped = {}; S.soakAt = null; S.open = null;
+}
+
+let P = null, lastE = 0, lastClock = 0, lastPetals = -1, plateInView = true;
+const elapsedMs = now => S.elapsed + (S.running ? now - S.startedAt : 0);
+
+/* Звук и экран */
+let ac = null;
+function audioUnlock() {
+  try {
+    // На iPhone просит систему не глушить сигнал переключателем беззвучного режима.
+    if (navigator.audioSession) navigator.audioSession.type = 'playback';
+    ac = ac || new (window.AudioContext || window.webkitAudioContext)();
+    if (ac.state === 'suspended') ac.resume().then(renderSound, () => {});
+  } catch (e) { ac = null; }
+}
+function strike(freq, t, vol, len) {
+  const o = ac.createOscillator(), g = ac.createGain();
+  o.type = 'sine'; o.frequency.value = freq;
+  g.gain.setValueAtTime(0.0001, t);
+  g.gain.exponentialRampToValueAtTime(vol, t + 0.008);
+  g.gain.exponentialRampToValueAtTime(0.0001, t + len);
+  o.connect(g); g.connect(ac.destination);
+  o.start(t); o.stop(t + len + 0.05);
+}
+function bell(kind) {
+  if (!S.sound || !ac) return;
+  try {
+    const t = ac.currentTime + 0.02;
+    if (kind === 'cue') {
+      strike(880, t, 0.35, 0.9); strike(1768, t, 0.12, 0.5);
+    } else {
+      [784, 988, 1319].forEach((f, i) => { const at = t + i * 0.28; strike(f, at, 0.7, 1.4); strike(f * 2.01, at, 0.2, 0.7); });
+    }
+  } catch (e) { /* сигнал не критичен: тарелка всё равно покажет время */ }
+}
+let wakeLock = null, wakeState = 'off';
+async function keepAwake() {
+  if (S.mode !== 'cook' || wakeState === 'on') return;
+  try {
+    if (!navigator.wakeLock) throw new Error('no api');
+    wakeLock = await navigator.wakeLock.request('screen');
+    wakeState = 'on';
+    wakeLock.addEventListener('release', () => { wakeState = 'off'; renderStatus(); });
+  } catch (e) { wakeState = 'no'; }
+  renderStatus();
+}
+function releaseAwake() {
+  try { if (wakeLock) wakeLock.release(); } catch (e) { /* уже отпущен */ }
+  wakeLock = null; wakeState = 'off';
+}
+
+/* Сигнал конца шага: повторяется, пока не нажмут кнопку, не дольше трёх минут */
+const alarm = { on: false, next: 0, until: 0 };
+function startAlarm(now) {
+  alarm.on = true; alarm.next = now; alarm.until = now + 180000;
+  try { if (navigator.vibrate) navigator.vibrate([300, 150, 300]); } catch (e) { /* не все устройства умеют */ }
+  renderControls();
+}
+function stopAlarm() {
+  if (!alarm.on) return;
+  alarm.on = false;
+  $('plate').classList.remove('ringing');
+  renderControls();
+}
+
+/* Тарелка */
+const NS = 'http://www.w3.org/2000/svg', PETALS = 48;
+const svgEl = (name, attrs, parent) => {
+  const n = document.createElementNS(NS, name);
+  for (const k in attrs) n.setAttribute(k, attrs[k]);
+  if (parent) parent.appendChild(n);
+  return n;
+};
+const petals = [];
+let routeRing, cueRing, capTop, digits, capBot;
+function buildPlate() {
+  const svg = $('plate');
+  svgEl('circle', { cx: 200, cy: 200, r: 199, class: 'p-base' }, svg);
+  routeRing = svgEl('g', {}, svg);
+  svgEl('circle', { cx: 200, cy: 200, r: 182, class: 'p-line' }, svg);
+  const off = svgEl('g', { transform: 'translate(200 200)' }, svg);
+  const on = svgEl('g', { transform: 'translate(200 200)' }, svg);
+  const d = 'M0,-177C8.5,-165 8.5,-143 0,-131C-8.5,-143 -8.5,-165 0,-177Z';
+  for (let i = 0; i < PETALS; i++) {
+    const r = 'rotate(' + (i * 360 / PETALS) + ')';
+    svgEl('path', { d, transform: r, class: 'p-off' }, off);
+    petals.push(svgEl('path', { d, transform: r, class: i % 2 ? 'p-on2' : 'p-on' }, on));
+    const a = (i + 0.5) * 2 * Math.PI / PETALS;
+    svgEl('circle', { cx: 124 * Math.sin(a), cy: -124 * Math.cos(a), r: 1.8, class: 'p-dot' }, off);
+  }
+  svgEl('circle', { cx: 200, cy: 200, r: 116, class: 'p-center' }, svg);
+  cueRing = svgEl('g', { transform: 'translate(200 200)' }, svg);
+  capTop = svgEl('text', { x: 200, y: 148, class: 'p-cap' }, svg);
+  digits = svgEl('text', { x: 200, y: 224, class: 'p-digits' }, svg);
+  capBot = svgEl('text', { x: 200, y: 266, class: 'p-cap' }, svg);
+}
+function arcPath(a0, a1, r) {
+  const pt = a => [200 + r * Math.sin(a * Math.PI / 180), 200 - r * Math.cos(a * Math.PI / 180)];
+  const [x0, y0] = pt(a0), [x1, y1] = pt(a1);
+  return 'M' + x0.toFixed(2) + ',' + y0.toFixed(2) + 'A' + r + ',' + r + ' 0 ' + (a1 - a0 > 180 ? 1 : 0) + ' 1 ' + x1.toFixed(2) + ',' + y1.toFixed(2);
+}
+// Внешнее кольцо: весь плов в масштабе времени, цвет отрезка равен цвету этапа в расписании.
+function renderRouteRing() {
+  routeRing.textContent = '';
+  let at = 0;
+  P.steps.forEach((s, i) => {
+    if (!s.mins) return;
+    const span = s.mins / P.total * 360;
+    const state = S.mode === 'idle' || i < S.idx ? '' : i === S.idx ? 'cur' : 'todo';
+    svgEl('path', { d: arcPath(at + 0.7, at + span - 0.7, 191), class: 'p-seg ' + state, 'data-ph': s.phase }, routeRing);
+    at += span;
+  });
+}
+function renderCueMarks() {
+  cueRing.textContent = '';
+  if (S.mode !== 'cook') return;
+  const s = P.steps[S.idx];
+  s.cues.forEach(c => {
+    const a = c.sec / (s.mins * 60) * 2 * Math.PI;
+    svgEl('circle', { cx: 124 * Math.sin(a), cy: -124 * Math.cos(a), r: 5.5, class: 'p-cue', 'data-sec': c.sec }, cueRing);
+  });
+}
+function paintPetals(frac) {
+  const x = frac * PETALS, key = Math.round(x * 20);
+  if (key === lastPetals) return;
+  lastPetals = key;
+  petals.forEach((p, i) => { p.style.opacity = x >= i + 1 ? 1 : x <= i ? 0 : x - i; });
+}
+// У этого шрифта цифры разной ширины, поэтому каждая стоит в своей ячейке и время не дёргается.
+function setDigits(str, size) {
+  const slot = size * 0.6, colon = size * 0.3;
+  const widths = [...str].map(c => c === ':' ? colon : slot);
+  let x = 200 - widths.reduce((n, w) => n + w, 0) / 2;
+  digits.setAttribute('x', widths.map(w => { const c = x + w / 2; x += w; return c.toFixed(1); }).join(' '));
+  digits.setAttribute('font-size', size);
+  digits.textContent = str;
+}
+function setCenter(top, bot) {
+  capTop.textContent = top;
+  capBot.textContent = bot;
+}
+
+/* Перерисовка таймера: вызывается с каждым тиком */
+function paintTimer(now) {
+  const plate = $('plate');
+  plate.classList.toggle('ringing', alarm.on);
+  if (S.mode === 'idle' || !P.steps[S.idx].mins) {
+    plate.classList.remove('over', 'paused');
+    paintPetals(1);
+    $('mini').hidden = true;
+    if (S.mode === 'idle') {
+      setDigits(Math.floor(P.total / 60) + ':' + pad2(P.total % 60), 88);
+      setCenter('весь плов', 'часы : минуты');
+    } else {
+      digits.setAttribute('x', 200);
+      digits.setAttribute('font-size', 38);
+      digits.textContent = 'Ош бўлсин!';
+      setCenter('плов готов', 'приятного аппетита');
+    }
+    $('timerSr').textContent = '';
+    return;
+  }
+  const s = P.steps[S.idx], D = s.mins * 60, e = elapsedMs(now) / 1000, rem = D - e, over = rem <= 0;
+  const text = over ? '+' + fmtClock(Math.floor(-rem)) : fmtClock(Math.ceil(rem));
+  setDigits(text, text.length > 5 ? 66 : 80);
+  setCenter(over ? 'время вышло' : S.running ? 'осталось' : 'пауза', 'из ' + s.mins + NB + 'мин');
+  plate.classList.toggle('over', over);
+  plate.classList.toggle('paused', !S.running && !over);
+  paintPetals(Math.min(1, e / D));
+  $('mini').hidden = plateInView;
+  $('mini').textContent = text;
+  $('mini').classList.toggle('over', over);
+  document.querySelectorAll('.cues li[data-sec]').forEach(li => li.classList.toggle('past', e >= +li.dataset.sec));
+  cueRing.querySelectorAll('.p-cue').forEach(c => c.classList.toggle('past', e >= +c.dataset.sec));
+  paintBanner(s, e, D);
+  const minsLeft = Math.ceil(Math.abs(rem) / 60);
+  $('timerSr').textContent = (over ? 'Время вышло ' : 'Осталось ') + minsLeft + ' ' + plural(minsLeft, 'минута', 'минуты', 'минут');
+}
+let bannerHtml = '';
+function paintBanner(s, e, D) {
+  let html = '', alert = false;
+  if (e >= D) {
+    html = '<span class="em">Время вышло.</span> Проверь: ' + lc(s.done);
+    alert = true;
+  } else {
+    const c = s.cues.filter(x => x.sec <= e).pop();
+    if (c && e - c.sec < 120) html = c.text;
+  }
+  if (html === bannerHtml) return;
+  bannerHtml = html;
+  $('banner').innerHTML = html;
+  $('banner').hidden = !html;
+  $('banner').classList.toggle('alert', alert);
+}
+function clearBanner() {
+  bannerHtml = '';
+  $('banner').hidden = true;
+  $('banner').innerHTML = '';
+}
+function paintMeta(now) {
+  const soakIdx = BASE.findIndex(s => s.id === 'soak'), layerIdx = BASE.findIndex(s => s.id === 'layer');
+  let text = '';
+  if (S.mode === 'cook' && S.soakAt && S.idx > soakIdx && S.idx <= layerIdx) {
+    const mins = Math.floor((now - S.soakAt) / 60000);
+    text = 'Рис мокнет ' + fmtDur(mins);
+    if (S.idx === layerIdx && mins < 40) text += '. Нужно хотя бы 40 мин, иначе зерно сварится неровно.';
+  }
+  $('meta').hidden = !text;
+  $('meta').textContent = text;
+}
+// Часы: когда начнётся каждый следующий шаг и когда плов будет на столе.
+function paintClocks(now) {
+  lastClock = now;
+  let at = now;
+  const cook = S.mode === 'cook';
+  P.steps.forEach((s, i) => {
+    let start = null;
+    if (!cook) { start = at; at += s.mins * 60000; }
+    else if (i === S.idx) { at = now + Math.max(0, s.mins * 60000 - elapsedMs(now)); }
+    else if (i > S.idx) { start = at; at += s.mins * 60000; }
+    const cell = document.querySelector('.row[data-i="' + i + '"] .row-time');
+    if (cell && start !== null) cell.textContent = clockOf(start);
+  });
+  const finish = cook && S.idx === P.steps.length - 1 ? now : at;
+  const a = P.a, nx = P.steps[S.idx + 1];
+  if (!cook) {
+    $('finding').textContent = fmtW(a.rice) + ' риса: ' + a.eaters + NB + plural(a.eaters, 'едок', 'едока', 'едоков') +
+      ', казан от ' + a.kazan + NB + 'л. Начнёшь сейчас, плов будет на столе к ' + clockOf(finish) + '.';
+    $('routeNote').textContent = 'если начать сейчас';
+  } else if (nx) {
+    $('finding').textContent = 'Дальше ' + nx.short + '. Плов на столе к ' + clockOf(finish) + '.';
+    $('routeNote').textContent = 'осталось ' + fmtDur(Math.ceil((finish - now) / 60000));
+  } else {
+    $('finding').textContent = 'Плов готов, неси к столу.';
+    $('routeNote').textContent = '';
+  }
+  paintMeta(now);
+}
+
+/* Отрисовка блоков */
+function renderCalc() {
+  const a = P.a;
+  if (document.activeElement !== $('rice')) $('rice').value = S.rice;
+  $('riceRange').value = S.rice;
+  document.querySelectorAll('#presets button').forEach(btn => btn.setAttribute('aria-pressed', String(+btn.dataset.g === S.rice)));
+  $('eaters').textContent = a.eaters;
+  $('kazan').textContent = 'от ' + a.kazan + NB + 'л';
+  const onions = Math.max(1, Math.round(a.onion / 100));
+  const groups = [
+    ['Основа', RATIO, [
+      ['Рис лазер', fmtW(a.rice), 'Длинное плотное зерно'],
+      ['Говядина', fmtW(a.meat), 'Лопатка или шея'],
+      ['Морковь', fmtW(a.carrot), 'Жёлтая и красная пополам']]],
+    ['Лук и жир', '', [
+      ['Лук', fmtW(a.onion), onions + NB + plural(onions, 'средняя', 'средние', 'средних') + ' ' + plural(onions, 'луковица', 'луковицы', 'луковиц')],
+      ['Курдюк', fmtW(a.kurdyuk), ''],
+      ['Масло', fmtVol(a.oil), 'Хлопковое или рафинированное']]],
+    ['Специи', '', [
+      ['Зира', fmtSpoon(a.zira), 'Растереть в ладонях'],
+      ['Барбарис, сушёный', fmtSpoon(a.barberry), ''],
+      ['Кориандр, семена', fmtSpoon(a.coriander), ''],
+      ['Чеснок', heads(a.garlic), ''],
+      ['Острый перец', pods(a.pepper), '']]],
+    ['Соль и вода', '', [
+      ['Соль в зирвак', fmtSpoon(a.saltZ), 'Крупная, без йода'],
+      ['Соль в замачивание', fmtSpoon(a.saltS), ''],
+      ['Кипяток в зирвак', '≈' + NB + fmtVol(a.waterZ), ''],
+      ['Кипяток на рис', '≈' + NB + fmtVol(a.waterR), 'Решает уровень над рисом']]]
+  ];
+  $('table').innerHTML = groups.map(([name, right, rows]) =>
+    '<tbody><tr><th scope="rowgroup">' + name + '</th><th class="num">' + right + '</th></tr>' +
+    rows.map(([n, v, note]) => '<tr><td>' + n + (note ? '<span class="note-line">' + note + '</span>' : '') + '</td><td class="num">' + v + '</td></tr>').join('') +
+    '</tbody>').join('');
+  $('achTable').innerHTML = '<tbody>' + [['Помидоры', fmtW(a.tomato)], ['Лук', fmtW(a.achOnion)]]
+    .map(([n, v]) => '<tr><td>' + n + '</td><td class="num">' + v + '</td></tr>').join('') + '</tbody>';
+}
+const RATIO = ['1', '1', '1'].join(NB + ':' + NB);
+const barsHTML = (level, tiny) => '<span class="bars' + (tiny ? ' tiny' : '') + '" aria-hidden="true">' +
+  [1, 2, 3, 4, 5].map(n => '<i' + (n <= level ? ' class="on"' : '') + '></i>').join('') + '</span>';
+// Казан с крышкой: закрытой или приподнятой.
+const lidIcon = open => '<svg class="ico" viewBox="0 0 24 18" aria-hidden="true"><path fill="currentColor" d="M3 8h18v2.5C21 14.6 17 17 12 17S3 14.6 3 10.5z"/>' +
+  (open ? '<path fill="currentColor" d="M4.4 5.6C6.6 1.8 13.2-.2 17.6 2.4L4.4 5.6z"/>' : '<path fill="currentColor" d="M4 6.6C6.5 3.4 17.5 3.4 20 6.6z"/>') + '</svg>';
+// Шумовка, а когда мешать нельзя, она перечёркнута.
+const stirIcon = ban => '<svg class="ico' + (ban ? ' ban' : '') + '" viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="9" cy="12" r="4.2"/><path d="M12 9L19 2"/>' +
+  (ban ? '<path d="M4 2L20 16"/>' : '') + '</svg>';
+function detailsHTML(s) {
+  let h = '<ul class="do">' + s.do.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+  if (s.cues.length) {
+    h += '<h3 class="sub-title">Когда на таймере</h3><ul class="cues">' +
+      s.cues.map(c => '<li data-sec="' + c.sec + '"><span class="num">' + fmtClock(s.mins * 60 - c.sec) + '</span><span>' + c.text + '</span></li>').join('') + '</ul>';
+  }
+  h += '<h3 class="sub-title">Готово, когда</h3><p>' + s.done + '</p>';
+  if (s.warn) h += '<p class="warn">' + s.warn + '</p>';
+  if (s.tip) h += '<p class="tip">' + s.tip + '</p>';
+  return h;
+}
+function renderStage() {
+  const idle = S.mode === 'idle', s = idle ? null : P.steps[S.idx], n = P.steps.length;
+  const phaseName = !idle && PHASES.find(p => p[0] === s.phase)[1];
+  $('stepTitle').textContent = idle ? 'Весь плов' : s.title;
+  $('stepCount').textContent = idle ? n + NB + plural(n, 'шаг', 'шага', 'шагов') : 'Шаг ' + (S.idx + 1) + ' из ' + n + ' · ' + phaseName;
+  if (idle) delete $('stage').dataset.ph; else $('stage').dataset.ph = s.phase;
+  // Со второго шага назад можно всегда, с первого в обзор, только если готовка ещё не началась всерьёз.
+  $('prev').style.visibility = !idle && (S.idx > 0 || !S.soakAt) ? 'visible' : 'hidden';
+  $('skip').style.visibility = !idle && S.idx === n - 1 ? 'hidden' : 'visible';
+  $('state').hidden = idle;
+  if (!idle) {
+    $('fireBars').innerHTML = barsHTML(s.fire);
+    $('fireWord').textContent = FIRE[s.fire];
+    const lid = $('lidWord'), stir = $('stirWord');
+    lid.textContent = s.lid || '—';
+    lid.className = s.lid ? '' : 'none';
+    $('lidIcon').innerHTML = s.lid ? lidIcon(s.lid !== 'закрыта') : '';
+    stir.textContent = s.stir || '—';
+    stir.className = !s.stir ? 'none' : s.stir === 'нельзя' ? 'no' : '';
+    $('stirIcon').innerHTML = s.stir ? stirIcon(s.stir === 'нельзя') : '';
+  }
+  lastPetals = -1;
+  renderRouteRing();
+  renderCueMarks();
+  if (idle || !s.mins) clearBanner();
+}
+const ICON = {
+  pause: '<svg viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><rect x="4" y="3" width="3.5" height="12" rx="1"/><rect x="10.5" y="3" width="3.5" height="12" rx="1"/></svg>',
+  play: '<svg viewBox="0 0 18 18" fill="currentColor" aria-hidden="true"><path d="M5 3.2v11.6c0 .5.5.8.9.5l9-5.8c.4-.2.4-.8 0-1l-9-5.8c-.4-.3-.9 0-.9.5z"/></svg>',
+  quiet: '<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 7v4h3l4 3V4L6 7H3z"/><path d="M13 7l3 4M16 7l-3 4"/></svg>',
+  sound: '<svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><path d="M3 7v4h3l4 3V4L6 7H3z"/><path d="M13 6.5c1.3 1.4 1.3 3.6 0 5M15 4.5c2.4 2.5 2.4 6.5 0 9"/></svg>',
+  check: '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 7.5l3 3 6-7"/></svg>',
+  skipped: '<svg class="skipped" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 3l4 4-4 4M8 3l4 4-4 4"/></svg>',
+  chev: '<svg class="row-chev" viewBox="0 0 10 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 1.5L7 5 3.5 8.5"/></svg>'
+};
+function renderControls() {
+  const idle = S.mode === 'idle', s = idle ? null : P.steps[S.idx], timed = !idle && s.mins > 0;
+  const next = !idle && P.steps[S.idx + 1];
+  const eMs = idle ? 0 : elapsedMs(Date.now());
+  const paused = timed && !S.running && eMs < s.mins * 60000;
+  // Большая кнопка всегда про следующее действие: на паузе запустить таймер, иначе идти дальше.
+  $('next').textContent = idle ? 'Начать готовить' : paused ? (eMs > 0 ? 'Продолжить' : 'Запустить таймер')
+    : next ? 'Дальше: ' + next.short : 'Сварить ещё раз';
+  $('toggle').hidden = !timed || paused;
+  $('minus').hidden = $('plus').hidden = !timed;
+  $('controls').classList.toggle('solo', !timed);
+  $('controls').classList.toggle('paused', paused);
+  $('reset').hidden = idle;
+  if (timed) {
+    const [icon, word] = alarm.on ? [ICON.quiet, 'Тихо'] : S.running ? [ICON.pause, 'Пауза'] : [ICON.play, 'Старт'];
+    $('toggle').innerHTML = icon + '<span class="lbl">' + word + '</span>';
+    $('toggle').setAttribute('aria-label', word);
+  }
+}
+function renderNow() {
+  if (S.mode === 'idle') {
+    const list = items => '<ul class="do">' + items.map(x => '<li>' + x + '</li>').join('') + '</ul>';
+    $('nowTitle').textContent = 'Перед стартом';
+    $('nowBody').innerHTML =
+      list([
+        'Приготовь казан от ' + b(P.a.kazan + NB + 'л') + ', шумовку, дуршлаг, чайник, плоскую тарелку и деревянную палочку.',
+        'Проверь звук кнопкой вверху: на iPhone его может глушить беззвучный режим.'
+      ]) +
+      '<h3 class="sub-title">На рынке</h3>' +
+      list([
+        'Говядина: лопатка или шея с прослойками жира. Вырезка пересохнет.',
+        'Морковь: плотная, лучше жёлтая с красной пополам. Жёлтая держит форму и даёт сладость.',
+        'Курдюк: белый, свежий, без резкого запаха.',
+        'Рис: целое зерно без мучной пыли. Лазер держит форму и даёт рисинку к рисинке. Девзира пьёт больше воды, с ней слой над рисом держи ближе к 2 см.'
+      ]) +
+      '<h3 class="sub-title">Канон</h3>' +
+      list([
+        'Куркума, лавровый лист и смеси для плова не нужны. Цвет дают лук и морковь, аромат зира.',
+        'Единого канона нет. Здесь классика ' + RATIO + ', а минуты ориентировочные: плита и казан у всех свои, поэтому верь приметам готовности.'
+      ]);
+  } else {
+    $('nowTitle').textContent = 'Что делать';
+    $('nowBody').innerHTML = detailsHTML(P.steps[S.idx]);
+  }
+}
+function renderRoute() {
+  const cook = S.mode === 'cook';
+  const cols = '<div class="route-cols" aria-hidden="true"><span>Когда</span><span></span><span class="c-fire">Огонь</span><span class="c-dur">Время</span><span></span></div>';
+  $('routeBody').innerHTML = cols + P.phases.map(ph => {
+    const rows = P.steps.map((s, i) => {
+      if (s.phase !== ph.id) return '';
+      const done = cook && i < S.idx, cur = cook && i === S.idx, open = S.open === i;
+      const mark = done ? (S.skipped[s.id] ? ICON.skipped + '<span class="sr">Шаг пропущен</span>' : ICON.check) : cur ? 'сейчас' : '';
+      return '<li class="row' + (done ? ' is-done' : '') + (cur ? ' is-now' : '') + '" data-i="' + i + '">' +
+        '<button class="row-btn" type="button" aria-expanded="' + open + '"' + (cur ? ' aria-current="step"' : '') + '>' +
+        '<span class="row-time num">' + mark + '</span>' +
+        '<span class="row-main">' + s.title + '<span class="row-sum">' + s.sum + '</span></span>' +
+        barsHTML(s.fire, true) + '<span class="sr">Огонь: ' + FIRE[s.fire] + '</span>' +
+        '<span class="row-dur num">' + (s.mins ? fmtDur(s.mins) : '—') + '</span>' + ICON.chev + '</button>' +
+        (open ? '<div class="row-more">' + detailsHTML(s) + '<button class="btn go" type="button">' + (cook ? 'Перейти к этому шагу' : 'Начать с этого шага') + '</button></div>' : '') +
+        '</li>';
+    }).join('');
+    return '<div class="phase-head" data-ph="' + ph.id + '"><span>' + ph.name + '</span><span class="phase-time num">' + (ph.mins ? fmtDur(ph.mins) : '') + '</span></div><ol>' + rows + '</ol>';
+  }).join('');
+}
+function renderSound() {
+  const btn = $('sound');
+  const needsTap = S.sound && S.mode === 'cook' && (!ac || ac.state !== 'running');
+  btn.classList.toggle('attn', needsTap);
+  btn.innerHTML = (S.sound ? ICON.sound : ICON.quiet) + '<span class="lbl">' + (needsTap ? 'Включить звук' : S.sound ? 'Звук вкл' : 'Звук выкл') + '</span>' +
+    (needsTap ? '<span class="lbl-short">Звук</span>' : '');
+  btn.setAttribute('aria-pressed', String(S.sound));
+  btn.setAttribute('aria-label', S.sound ? 'Звук сигналов включён' : 'Звук сигналов выключен');
+}
+function renderStatus() {
+  const cook = S.mode === 'cook';
+  $('screenState').hidden = !(cook && wakeState === 'on');
+  $('screenState').textContent = 'Экран не гаснет';
+  $('screenWarn').hidden = !(cook && wakeState === 'no');
+}
+function renderAll() {
+  P = makePlan(S.rice, S.adj);
+  console.assert(P.phases.reduce((n, p) => n + p.mins, 0) === P.total, 'Сумма этапов не равна общему времени');
+  $('canvas').dataset.mode = S.mode;
+  renderCalc();
+  renderStage();
+  renderControls();
+  renderNow();
+  renderRoute();
+  renderSound();
+  renderStatus();
+  const now = Date.now();
+  paintTimer(now);
+  paintClocks(now);
+}
+
+/* Действия */
+function setRice(g) {
+  S.rice = g;
+  save();
+  renderAll();
+}
+function setStep(i, run) {
+  const now = Date.now();
+  stopAlarm();
+  S.saved[P.steps[S.idx].id] = elapsedMs(now);
+  S.idx = i;
+  const s = P.steps[i];
+  S.elapsed = S.saved[s.id] || 0;
+  S.running = !!(run && s.mins);
+  S.startedAt = now;
+  S.open = null;
+  lastE = S.elapsed / 1000;
+  clearBanner();
+  save();
+  renderAll();
+  const top = $('stage').getBoundingClientRect().top;
+  if (top < 60 || top > innerHeight * 0.4) $('stage').scrollIntoView({ block: 'start' });
+}
+function startCooking(i, run) {
+  audioUnlock();
+  S.mode = 'cook'; S.idx = i; S.saved = {}; S.skipped = {}; S.elapsed = 0; S.soakAt = null;
+  S.running = !!(run && BASE[i].min); S.startedAt = Date.now(); S.open = null;
+  lastE = 0;
+  clearBanner();
+  save();
+  renderAll();
+  keepAwake();
+  window.scrollTo(0, 0);
+}
+function resetAll() {
+  stopAlarm();
+  clearCooking();
+  releaseAwake();
+  clearBanner();
+  save();
+  renderAll();
+  window.scrollTo(0, 0);
+}
+function leaveForward() {
+  if (P.steps[S.idx].id === 'soak' && !S.soakAt) S.soakAt = Date.now();
+}
+// Большая кнопка: на паузе запускает таймер, иначе завершает шаг и сразу запускает следующий.
+function primaryAction() {
+  audioUnlock();
+  if (S.mode === 'idle') { startCooking(0, true); return; }
+  const s = P.steps[S.idx];
+  if (s.mins && !S.running && elapsedMs(Date.now()) < s.mins * 60000) { toggleTimer(); return; }
+  if (S.idx === P.steps.length - 1) { resetAll(); return; }
+  leaveForward();
+  delete S.skipped[s.id];
+  setStep(S.idx + 1, true);
+}
+// Стрелки листают шаги и не запускают таймер: пропустил нарезку и решаешь сам, когда начать следующий шаг.
+function stepBy(delta) {
+  audioUnlock();
+  if (S.mode === 'idle') {
+    if (delta > 0) startCooking(0, false);
+    return;
+  }
+  const i = S.idx + delta;
+  if (i < 0) {
+    if (!S.soakAt) resetAll();
+    return;
+  }
+  if (i >= P.steps.length) return;
+  if (delta > 0) { leaveForward(); S.skipped[P.steps[S.idx].id] = true; }
+  else delete S.skipped[P.steps[i].id];
+  setStep(i, false);
+}
+function toggleTimer() {
+  audioUnlock();
+  if (alarm.on) { stopAlarm(); return; }
+  const now = Date.now();
+  if (S.running) { S.elapsed = elapsedMs(now); S.running = false; }
+  else { S.startedAt = now; S.running = true; }
+  lastE = elapsedMs(now) / 1000;
+  save();
+  renderControls();
+  paintTimer(now);
+}
+function adjust(delta) {
+  const s = P.steps[S.idx];
+  if (s.mins + delta < 1) return;
+  S.adj[s.id] = (S.adj[s.id] || 0) + delta;
+  const D = (s.mins + delta) * 60, e = elapsedMs(Date.now()) / 1000;
+  if (e < D) stopAlarm();
+  lastE = Math.min(e, D - 0.001);
+  save();
+  renderAll();
+}
+let resetTimer = 0;
+function armReset() {
+  const btn = $('reset');
+  if (resetTimer) {
+    clearTimeout(resetTimer); resetTimer = 0;
+    btn.textContent = 'Сбросить готовку';
+    resetAll();
+    return;
+  }
+  btn.textContent = 'Нажми ещё раз, чтобы сбросить';
+  resetTimer = setTimeout(() => { resetTimer = 0; btn.textContent = 'Сбросить готовку'; }, 4000);
+}
+
+/* Такт: сигналы, тарелка, часы */
+function tick() {
+  const now = Date.now();
+  if (S.mode === 'cook') {
+    const s = P.steps[S.idx];
+    if (s.mins) {
+      const e = elapsedMs(now) / 1000;
+      if (S.running) {
+        const ev = timerEvents(lastE, e, s.cues, s.mins * 60);
+        if (ev.cue) bell('cue');
+        if (ev.finished) startAlarm(now);
+      }
+      lastE = e;
+    }
+    paintTimer(now);
+    if (alarm.on) {
+      if (now >= alarm.next) { bell('end'); alarm.next = now + 12000; }
+      if (now >= alarm.until) stopAlarm();
+    }
+  }
+  if (now - lastClock > 15000) paintClocks(now);
+}
+
+/* События */
+$('rice').addEventListener('input', e => {
+  const g = parseRice(e.target.value);
+  const bad = g === null || g < MIN_RICE || g > MAX_RICE;
+  $('riceHint').classList.toggle('bad', bad);
+  if (g !== null) setRice(clampRice(g));
+});
+$('rice').addEventListener('blur', () => {
+  $('rice').value = S.rice;
+  $('riceHint').classList.remove('bad');
+});
+$('riceRange').addEventListener('input', e => setRice(clampRice(+e.target.value)));
+$('presets').addEventListener('click', e => {
+  const btn = e.target.closest('button');
+  if (btn) setRice(+btn.dataset.g);
+});
+$('eatMinus').addEventListener('click', () => setRice(clampRice(Math.max(2, P.a.eaters - 1) * PER_EATER)));
+$('eatPlus').addEventListener('click', () => setRice(clampRice((P.a.eaters + 1) * PER_EATER)));
+$('next').addEventListener('click', primaryAction);
+$('toggle').addEventListener('click', toggleTimer);
+$('minus').addEventListener('click', () => adjust(-1));
+$('plus').addEventListener('click', () => adjust(1));
+$('prev').addEventListener('click', () => stepBy(-1));
+$('skip').addEventListener('click', () => stepBy(1));
+$('reset').addEventListener('click', armReset);
+$('sound').addEventListener('click', () => {
+  const needsTap = S.sound && (!ac || ac.state !== 'running');
+  audioUnlock();
+  if (!needsTap) S.sound = !S.sound;
+  save();
+  renderSound();
+  bell('cue');
+});
+$('routeBody').addEventListener('click', e => {
+  const li = e.target.closest('.row');
+  if (!li) return;
+  const i = +li.dataset.i;
+  if (e.target.closest('.go')) {
+    if (S.mode === 'idle') startCooking(i, false);
+    else setStep(i, false);
+    return;
+  }
+  if (!e.target.closest('.row-btn')) return;
+  if (S.mode === 'cook' && i === S.idx) { $('stage').scrollIntoView({ block: 'start' }); return; }
+  S.open = S.open === i ? null : i;
+  renderRoute();
+  paintClocks(Date.now());
+  const again = document.querySelector('.row[data-i="' + i + '"] .row-btn');
+  if (again) again.focus();
+});
+// Стрелки на клавиатуре листают шаги, если курсор не стоит в поле или на слайдере.
+document.addEventListener('keydown', e => {
+  if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+  if (e.target.closest && e.target.closest('input, textarea, select')) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); stepBy(1); }
+  if (e.key === 'ArrowLeft') { e.preventDefault(); stepBy(-1); }
+});
+document.addEventListener('pointerdown', () => {
+  if (S.mode !== 'cook') return;
+  audioUnlock();
+  renderSound();
+  keepAwake();
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') { keepAwake(); tick(); }
+});
+
+/* Старт */
+load();
+buildPlate();
+P = makePlan(S.rice, S.adj);
+lastE = S.mode === 'cook' ? elapsedMs(Date.now()) / 1000 : 0;
+renderAll();
+if (S.mode === 'cook') keepAwake();
+// Такт из воркера не замедляется в фоновой вкладке, setInterval страхует, если воркер недоступен.
+try {
+  const url = URL.createObjectURL(new Blob(['setInterval(function(){postMessage(0)},500)'], { type: 'text/javascript' }));
+  new Worker(url).onmessage = tick;
+} catch (e) { /* остаётся setInterval ниже */ }
+setInterval(tick, 1000);
+if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => paintTimer(Date.now()));
+// Малый таймер в шапке нужен, только когда тарелка ушла с экрана.
+if ('IntersectionObserver' in window) {
+  new IntersectionObserver(([entry]) => {
+    plateInView = entry.isIntersecting;
+    paintTimer(Date.now());
+  }, { threshold: 0.25 }).observe($('plate'));
+}
+</script>
+<script src="tg.js"></script>
+<script src="https://telegram.org/js/telegram-web-app.js" async onload="tgStart()"></script>
+</body>
+</html>
