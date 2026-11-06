@@ -1,5 +1,5 @@
 // Хранит сайт на телефоне, чтобы он открывался без интернета.
-const CACHE = 'plov-f097793f65';
+const CACHE = 'plov-5e68b98d47';
 const FILES = ['./', 'manifest.json', 'icon-192.png', 'icon-512.png', 'tg.js'];
 
 self.addEventListener('install', e => {
